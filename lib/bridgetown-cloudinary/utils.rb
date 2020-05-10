@@ -20,23 +20,23 @@ module Bridgetown
 
       def self.add_image_urls_to_documents(site, cloudinary_config)
         (site.documents + site.pages).each do |page|
-          if page.data[:cloudinary_id] && !page.data[:image]
-            page.data[:image] = {
-              path: url(
-                config: cloudinary_config,
-                id: page.data[:cloudinary_id],
-                transformation: nil
-              )
-            }
-            if cloudinary_config[:add_transformed_urls_to_image_front_matter]
-              cloudinary_config[:transformations].each_key do |transformation|
-                page.data[:image][transformation] = url(
-                  config: cloudinary_config,
-                  id: page.data[:cloudinary_id],
-                  transformation: transformation
-                )
-              end
-            end
+          next unless page.data[:cloudinary_id] && !page.data[:image]
+
+          page.data[:image] = {
+            path: url(
+              config: cloudinary_config,
+              id: page.data[:cloudinary_id],
+              transformation: nil
+            ),
+          }
+          next unless cloudinary_config[:add_transformed_urls_to_image_front_matter]
+
+          cloudinary_config[:transformations].each_key do |transformation|
+            page.data[:image][transformation] = url(
+              config: cloudinary_config,
+              id: page.data[:cloudinary_id],
+              transformation: transformation
+            )
           end
         end
       end

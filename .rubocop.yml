@@ -20,3 +20,7 @@ AllCops:
 
     - script/**/*
     - vendor/**/*
+
+Metrics/AbcSize:
+  Exclude:
+    - lib/bridgetown-cloudinary/utils.rb
