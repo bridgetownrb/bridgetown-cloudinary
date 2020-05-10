@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -e
+
+script/cibuild
+bundle exec rake release

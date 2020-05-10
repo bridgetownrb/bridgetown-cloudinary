@@ -1,0 +1,30 @@
+---
+layout: default
+cloudinary_id: the_id_123
+---
+
+{% cloudinary_img "This is inline", "inline_id" %}
+
+{% cloudinary_img "This is page", page.cloudinary_id %}
+
+{% assign post = page %}
+{% cloudinary_img "This is local object", post.cloudinary_id %}
+
+{% assign local_id = "local_id" %}
+{% cloudinary_img "This is local variable", local_id %}
+
+Transformations:
+
+{% cloudinary_img "Transformation", local_id, "maxsize" %}
+
+Filters:
+
+{{ "filtered_id" | cloudinary_url }}
+
+{{ "filtered_id_max" | cloudinary_url: "medium" }}
+
+Generator:
+
+image: {{ page.image.path }}
+
+tiny: {{ page.image.tiny }}

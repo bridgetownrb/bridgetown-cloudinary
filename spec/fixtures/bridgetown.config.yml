@@ -1,0 +1,7 @@
+timezone: UTC
+
+cloudinary:
+  cloud_name: bridgetown_test
+  transformations:
+    maxsize: w_4096,c_limit,q_65
+  add_transformed_urls_to_image_front_matter: true
