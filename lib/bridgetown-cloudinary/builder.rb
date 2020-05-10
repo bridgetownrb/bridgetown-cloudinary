@@ -22,52 +22,48 @@ module Bridgetown
 
       # Set up the Cloudinary configuration
       def build
-        cloudinary_config = config[:cloudinary]
-
         ::Cloudinary.config({
-          "cloud_name" => cloudinary_config[:cloud_name],
+          "cloud_name" => config[:cloudinary][:cloud_name],
           "secure"     => true,
         })
 
-        setup_tag(cloudinary_config)
-        setup_filter(cloudinary_config)
+        liquid_filter "cloudinary_url", :url_filter
+        liquid_tag "cloudinary_img", :img_tag
+        generator :add_image_urls_to_documents
+      end
 
-        generator do
-          Bridgetown::Cloudinary::Utils.add_image_urls_to_documents(
-            site, cloudinary_config
-          )
-        end
+      # Populate front matter
+      def add_image_urls_to_documents
+        Bridgetown::Cloudinary::Utils.add_image_urls_to_documents(
+          site, config[:cloudinary]
+        )
       end
 
       # Define the "cloudinary_img" Liquid tag
-      def setup_tag(cloudinary_config)
-        liquid_tag "cloudinary_img" do |attributes, context|
-          alt, id, transformation = attributes.split(",").map(&:strip)
-          alt.delete! '"'
-          if id.include? '"'
-            id.delete! '"'
-          elsif id.include? "."
-            obj, var = id.split(".")
-            id = context[obj][var]
-          else
-            id = context[id]
-          end
-          transformation&.delete! '"'
-
-          cloudinary_url = Bridgetown::Cloudinary::Utils.url(
-            config: cloudinary_config, id: id, transformation: transformation
-          )
-          "<img alt=\"#{alt}\" src=\"#{cloudinary_url}\" />"
+      def img_tag(attributes, tag)
+        alt, id, transformation = attributes.split(",").map(&:strip)
+        alt.delete! '"'
+        if id.include? '"'
+          id.delete! '"'
+        elsif id.include? "."
+          obj, var = id.split(".")
+          id = tag.context[obj][var]
+        else
+          id = tag.context[id]
         end
+        transformation&.delete! '"'
+
+        cloudinary_url = Bridgetown::Cloudinary::Utils.url(
+          config: config[:cloudinary], id: id, transformation: transformation
+        )
+        "<img alt=\"#{alt}\" src=\"#{cloudinary_url}\" />"
       end
 
       # Define the "cloudinary_url" Liquid filter
-      def setup_filter(cloudinary_config)
-        liquid_filter "cloudinary_url" do |id, transformation = nil|
-          Bridgetown::Cloudinary::Utils.url(
-            config: cloudinary_config, id: id, transformation: transformation
-          )
-        end
+      def url_filter(id, transformation = nil)
+        Bridgetown::Cloudinary::Utils.url(
+          config: config[:cloudinary], id: id, transformation: transformation
+        )
       end
     end
   end
