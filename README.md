@@ -54,7 +54,7 @@ own.)
 
 You can use `image.path` in a template:
 
-{% raw %}`{{ post.image.path }}`{% endraw %}
+`{{ post.image.path }}`
 
 Since `image.path` is also referenced by the Bridgetown [Feed](https://github.com/bridgetownrb/bridgetown-feed) and [SEO](https://github.com/bridgetownrb/bridgetown-seo-tag) plugins,
 your Cloudinary images will be picked up in those contexts automatically.
@@ -62,11 +62,11 @@ your Cloudinary images will be picked up in those contexts automatically.
 To reference other available sizes, you can use either a Liquid tag or filter,
 depending on your needs. Using a tag:
 
-{% raw %}`{% cloudinary_img "Alt text goes here", post.cloudinary_id, "large" %}`{% endraw %}
+`{% cloudinary_img "Alt text goes here", post.cloudinary_id, "large" %}`
 
 Or a filter:
 
-{% raw %}`<img alt="Alt text" src="{{ post.cloudinary_id | cloudinary_url: "medium" }}" />`{% endraw %}
+`<img alt="Alt text" src="{{ post.cloudinary_id | cloudinary_url: "medium" }}" />`
 
 
 ### Default Sizes Included
@@ -97,7 +97,7 @@ cloudinary:
 
 Then you'll be able to reference image sizes like so:
 
-{% raw %}`<img alt="Alt text" src="{{ post.image.tiny }}" />`{% endraw %}
+`<img alt="Alt text" src="{{ post.image.tiny }}" />`
 
 Be aware that if an `image` front matter variable has already defined for a document,
 it will remain intact and the Cloudinary image transformations won't be apply for
@@ -116,7 +116,7 @@ cloudinary:
 If you configure transformations to get added to front matter, all custom
 transformations will show up there as well:
 
-{% raw %}`B&W image URL: {{ post.image.max_bw }}`{% endraw %}
+`B&W image URL: {{ post.image.max_bw }}`
 
 ## Testing
 
