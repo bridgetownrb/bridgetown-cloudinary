@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = ">= 2.5.0"
 
-  spec.add_dependency "bridgetown", ">= 0.13", "< 2.0"
+  spec.add_dependency "bridgetown", ">= 0.14", "< 2.0"
   spec.add_dependency "cloudinary", ">= 0.13"
 
   spec.add_development_dependency "bundler"

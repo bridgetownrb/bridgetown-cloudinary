@@ -27,9 +27,9 @@ module Bridgetown
           "secure"     => true,
         })
 
-        liquid_filter "cloudinary_url", :url_filter
-        liquid_tag "cloudinary_img", :img_tag
         generator :add_image_urls_to_documents
+        liquid_tag "cloudinary_img", :img_tag
+        liquid_filter "cloudinary_url", :url_filter
       end
 
       # Populate front matter
@@ -53,10 +53,7 @@ module Bridgetown
         end
         transformation&.delete! '"'
 
-        cloudinary_url = Bridgetown::Cloudinary::Utils.url(
-          config: config[:cloudinary], id: id, transformation: transformation
-        )
-        "<img alt=\"#{alt}\" src=\"#{cloudinary_url}\" />"
+        "<img alt=\"#{alt}\" src=\"#{url_filter(id, transformation)}\" />"
       end
 
       # Define the "cloudinary_url" Liquid filter
