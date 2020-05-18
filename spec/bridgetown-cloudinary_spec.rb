@@ -65,12 +65,16 @@ describe(Bridgetown::Cloudinary) do
   end
 
   context "image generator" do
-    it "should set the page's image variable default path" do
+    it "sets the page's image variable default path" do
       expect(contents).to match "image: https://res.cloudinary.com/bridgetown_test/image/upload/c_fill,g_face:center,w_1600,h_900,q_50/the_id_123.jpg"
     end
 
-    it "should set the page's image variable tiny path" do
+    it "sets the page's image variable tiny path" do
       expect(contents).to match "tiny: https://res.cloudinary.com/bridgetown_test/image/upload/w_300,c_limit,q_90/the_id_123.jpg"
+    end
+
+    it "supports custom transformations" do
+      expect(contents).to match "maxsize: https://res.cloudinary.com/bridgetown_test/image/upload/w_4096,c_limit,q_65/the_id_123.jpg"
     end
   end
 end

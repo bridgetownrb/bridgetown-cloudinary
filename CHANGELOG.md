@@ -1,7 +1,6 @@
 # master
 
-* Use this file to keep track of plugin updates
+# 1.0.0 / 2020-05-18
 
-## 0.1.0 / 2020-05-01
-
-* First version
+* First version of the Cloudinary plugin for Bridgetown, including defaults for
+  various image sizes.
