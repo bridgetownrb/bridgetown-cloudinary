@@ -9,6 +9,10 @@ This plugin wires the two up so you can use Cloudinary images in your blog posts
 articles, product pages, site templates, and anywhere else you might need to
 reference media optimized for mobile and responsive design.
 
+(_Note: For users who may be familiar with the jekyll-cloudinary plugin, this is
+unrelated and the usage is quite different. This plugin assumes you store your
+images in Cloudinary directly, not your repo._)
+
 ## Installation
 
 Run this command to add this plugin to your site's Gemfile:
