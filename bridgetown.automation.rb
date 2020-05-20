@@ -1,8 +1,10 @@
 # Supporting the upcoming automation feature
 
+say_status "Cloudinary", "Installing the bridgetown-cloudinary plugin..."
+
 cloud_name = ask("What's your Cloudinary cloud name?")
 
-run "bundle add bridgetown-cloudinary -g bridgetown_plugins"
+add_bridgetown_plugin "bridgetown-sample-plugin"
 
 append_to_file "bridgetown.config.yml" do
   <<~YAML
