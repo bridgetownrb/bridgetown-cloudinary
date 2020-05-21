@@ -1,6 +1,7 @@
 ---
 layout: default
 cloudinary_id: the_id_123
+transformation_alt: Transformation
 ---
 
 {% cloudinary_img "This is inline", "inline_id" %}
@@ -10,12 +11,13 @@ cloudinary_id: the_id_123
 {% assign post = page %}
 {% cloudinary_img "This is local object", post.cloudinary_id %}
 
+{% assign local_alt = "This is local variable" %}
 {% assign local_id = "local_id" %}
-{% cloudinary_img "This is local variable", local_id %}
+{% cloudinary_img local_alt, local_id %}
 
 Transformations:
 
-{% cloudinary_img "Transformation", local_id, "maxsize" %}
+{% cloudinary_img page.transformation_alt, local_id, "maxsize" %}
 
 Filters:
 

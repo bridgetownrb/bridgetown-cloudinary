@@ -42,15 +42,8 @@ module Bridgetown
       # Define the "cloudinary_img" Liquid tag
       def img_tag(attributes, tag)
         alt, id, transformation = attributes.split(",").map(&:strip)
-        alt.delete! '"'
-        if id.include? '"'
-          id.delete! '"'
-        elsif id.include? "."
-          obj, var = id.split(".")
-          id = tag.context[obj][var]
-        else
-          id = tag.context[id]
-        end
+        alt = variable_in_context(alt, tag.context)
+        id = variable_in_context(id, tag.context)
         transformation&.delete! '"'
 
         "<img alt=\"#{alt}\" src=\"#{url_filter(id, transformation)}\" />"
@@ -61,6 +54,20 @@ module Bridgetown
         Bridgetown::Cloudinary::Utils.url(
           config: config[:cloudinary], id: id, transformation: transformation
         )
+      end
+
+      protected
+
+      def variable_in_context(variable, tag_context)
+        if variable.include? '"'
+          variable.delete! '"'
+        elsif variable.include? "."
+          obj, var = variable.split(".")
+          variable = tag_context[obj][var]
+        else
+          variable = tag_context[variable]
+        end
+        variable
       end
     end
   end
