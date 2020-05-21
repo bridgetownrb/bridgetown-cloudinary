@@ -46,6 +46,10 @@ describe(Bridgetown::Cloudinary) do
     it "outputs with a local variable" do
       expect(contents).to match '<img alt="This is local variable" src="https://res.cloudinary.com/bridgetown_test/image/upload/c_fill,g_face:center,w_1600,h_900,q_50/local_id.jpg" />'
     end
+
+    it "escapes alt text" do
+      expect(contents).to match '<img alt="Alt text &quot; class=&quot;badclass" src="https://res.cloudinary.com/bridgetown_test/image/upload/w_4096,c_limit,q_65/local_id.jpg" />'
+    end
   end
 
   context "transformations" do

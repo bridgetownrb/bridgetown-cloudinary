@@ -3,6 +3,8 @@
 module Bridgetown
   module Cloudinary
     class Builder < Bridgetown::Builder
+      include Bridgetown::Filters
+
       CONFIG_DEFAULTS = {
         cloudinary: {
           cloud_name: nil,
@@ -67,7 +69,7 @@ module Bridgetown
         else
           variable = tag_context[variable]
         end
-        variable
+        xml_escape(variable)
       end
     end
   end

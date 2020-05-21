@@ -2,6 +2,7 @@
 layout: default
 cloudinary_id: the_id_123
 transformation_alt: Transformation
+nasty_alt: "Alt text \" class=\"badclass"
 ---
 
 {% cloudinary_img "This is inline", "inline_id" %}
@@ -18,6 +19,10 @@ transformation_alt: Transformation
 Transformations:
 
 {% cloudinary_img page.transformation_alt, local_id, "maxsize" %}
+
+Nasty Alt:
+
+{% cloudinary_img page.nasty_alt, local_id, "maxsize" %}
 
 Filters:
 
