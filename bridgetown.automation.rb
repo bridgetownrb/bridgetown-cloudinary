@@ -14,4 +14,5 @@ append_to_file "bridgetown.config.yml" do
   YAML
 end
 
-say_status :cloudinary, "All set! Double-check the cloudinary block in your config file and review docs at https://github.com/bridgetown/bridgetown-cloudinary"
+say_status :cloudinary, "All set! Double-check the cloudinary block in your config file and review docs at"
+say_status :cloudinary, "https://github.com/bridgetown/bridgetown-cloudinary"
