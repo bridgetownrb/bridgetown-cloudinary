@@ -1,6 +1,6 @@
 # Supporting the upcoming automation feature
 
-say_status "Cloudinary", "Installing the bridgetown-cloudinary plugin..."
+say_status :cloudinary, "Installing the bridgetown-cloudinary plugin..."
 
 cloud_name = ask("What's your Cloudinary cloud name?")
 
@@ -13,3 +13,6 @@ append_to_file "bridgetown.config.yml" do
       cloud_name: #{cloud_name}
   YAML
 end
+
+say_status :cloudinary, "All set! Double-check the cloudinary block in your config file and review docs at"
+say_status :cloudinary, "https://github.com/bridgetownrb/bridgetown-cloudinary"
