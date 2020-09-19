@@ -1,5 +1,9 @@
 # master
 
+# 1.1.0 / 2020-09-19
+
+* Add helper support for Ruby-based templates (requires Bridgetown 0.17)
+
 # 1.0.2 / 2020-05-21
 
 * Escape tag attributes with `xml_escape`
