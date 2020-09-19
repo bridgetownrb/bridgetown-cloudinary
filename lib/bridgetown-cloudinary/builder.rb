@@ -54,7 +54,7 @@ module Bridgetown
 
         "<img alt=\"#{alt}\" src=\"#{url_filter(id, transformation)}\" />"
       end
-      
+
       # Define the "cloudinary_img" Ruby helper
       def img_helper(alt, id, transformation = nil)
         "<img alt=\"#{alt}\" src=\"#{url_filter(id, transformation)}\" />"
