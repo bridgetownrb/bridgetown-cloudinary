@@ -18,23 +18,24 @@ module Bridgetown
         cloudinary_url&.sub("/image/upload", "/image/upload#{transformation}")
       end
 
-      def self.add_image_urls_to_documents(site, config)
-        (site.documents + site.pages).each do |page|
-          next unless page.data[:cloudinary_id] && !page.data[:image]
+      def self.add_image_urls_to_resources(site, config)
+        site.contents.each do |resource|
+          next unless resource.data[:cloudinary_id] && !resource.data[:image]
+          next if resource.respond_to?(:collection) && resource.collection.data?
 
-          page.data[:image] = {
+          resource.data[:image] = {
             path: url(
               config: config,
-              id: page.data[:cloudinary_id],
+              id: resource.data[:cloudinary_id],
               transformation: nil
             ),
           }
           next unless config[:add_transformed_urls_to_image_front_matter]
 
           config[:transformations].each_key do |transformation|
-            page.data[:image][transformation] = url(
+            resource.data[:image][transformation] = url(
               config: config,
-              id: page.data[:cloudinary_id],
+              id: resource.data[:cloudinary_id],
               transformation: transformation
             )
           end

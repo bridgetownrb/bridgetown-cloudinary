@@ -15,7 +15,7 @@ images in Cloudinary directly, not your repo._)
 
 ## Installation
 
-If you're running Bridgetown v0.15 or later, you can install this plugin via an automation to guide you through the configuration:
+You can install this plugin via an automation to guide you through the configuration:
 
 ```shell
 bundle exec bridgetown apply https://github.com/bridgetownrb/bridgetown-cloudinary
@@ -38,7 +38,7 @@ cloudinary:
 ## Usage
 
 The simplest usage of the Bridgetown Cloudinary plugin is to add a `cloudinary_id` to
-the front matter of a page or document. For example:
+the front matter of a resource. For example:
 
 ```yaml
 ---
@@ -63,7 +63,7 @@ You can use `image.path` in a template:
 Since `image.path` is also referenced by the Bridgetown [Feed](https://github.com/bridgetownrb/bridgetown-feed) and [SEO](https://github.com/bridgetownrb/bridgetown-seo-tag) plugins,
 your Cloudinary images will be picked up in those contexts automatically.
 
-To reference other available sizes, you can use either a Liquid tag or filter,
+To reference other available sizes, you can use either a Liquid tag or filter, or Ruby helper,
 depending on your needs. Using a tag:
 
 `{% cloudinary_img "Alt text goes here", post.cloudinary_id, "large" %}`
@@ -72,6 +72,11 @@ Or a filter:
 
 `<img alt="Alt text" src="{{ post.cloudinary_id | cloudinary_url: "medium" }}" />`
 
+Or helpers in ERB and other Ruby templates:
+
+`<%= cloudinary_img "Alt text goes here", post.data.cloudinary_id %>`
+
+`<img alt="Alt text" src="<%= cloudinary_url post.data.cloudinary_id, :medium %>" />`
 
 ### Default Sizes Included
 

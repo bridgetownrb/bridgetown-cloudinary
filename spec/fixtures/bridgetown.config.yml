@@ -1,5 +1,7 @@
 timezone: UTC
 
+# content_engine: resource
+
 cloudinary:
   cloud_name: bridgetown_test
   transformations:

@@ -29,18 +29,16 @@ module Bridgetown
           "secure"     => true,
         })
 
-        generator :add_image_urls_to_documents
+        generator :add_image_urls_to_resources
         liquid_tag "cloudinary_img", :img_tag
         liquid_filter "cloudinary_url", :url_filter
-        if respond_to? :helper
-          helper "cloudinary_img", :img_helper
-          helper "cloudinary_url", :url_filter
-        end
+        helper "cloudinary_img", :img_helper
+        helper "cloudinary_url", :url_filter
       end
 
       # Populate front matter
-      def add_image_urls_to_documents
-        Bridgetown::Cloudinary::Utils.add_image_urls_to_documents(
+      def add_image_urls_to_resources
+        Bridgetown::Cloudinary::Utils.add_image_urls_to_resources(
           site, config[:cloudinary]
         )
       end

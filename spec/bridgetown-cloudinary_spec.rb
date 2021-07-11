@@ -81,4 +81,12 @@ describe(Bridgetown::Cloudinary) do
       expect(contents).to match "maxsize: https://res.cloudinary.com/bridgetown_test/image/upload/w_4096,c_limit,q_65/the_id_123.jpg"
     end
   end
+
+  context "check resource engine too" do
+    let(:overrides) { { content_engine: "resource" } }
+
+    it "sets the page's image variable default path" do
+      expect(contents).to match "image: https://res.cloudinary.com/bridgetown_test/image/upload/c_fill,g_face:center,w_1600,h_900,q_50/the_id_123.jpg"
+    end
+  end
 end
