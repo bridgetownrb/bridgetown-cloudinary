@@ -144,3 +144,4 @@ transformations will show up there as well:
 
 To release a new version of the plugin, simply bump up the version number in
 `version.rb` and then run `script/release`.
+# bridgetown-website-v2
