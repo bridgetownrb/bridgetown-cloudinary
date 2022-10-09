@@ -81,5 +81,3 @@ module Bridgetown
     end
   end
 end
-
-Bridgetown::Cloudinary::Builder.register

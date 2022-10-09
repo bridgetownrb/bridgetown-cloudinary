@@ -10,7 +10,9 @@ describe(Bridgetown::Cloudinary) do
       "root_dir"     => root_dir,
       "source"       => source_dir,
       "destination"  => dest_dir
-    }, overrides))
+    }, overrides)).tap do |conf|
+      conf.run_initializers! context: :static
+    end
   end
   let(:metadata_overrides) { {} }
   let(:metadata_defaults) do
