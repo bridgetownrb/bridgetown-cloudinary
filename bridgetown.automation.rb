@@ -6,13 +6,13 @@ cloud_name = ask("What's your Cloudinary cloud name?")
 
 add_bridgetown_plugin "bridgetown-cloudinary"
 
-append_to_file "bridgetown.config.yml" do
-  <<~YAML
-
-    cloudinary:
-      cloud_name: #{cloud_name}
-  YAML
+add_initializer :"bridgetown-cloudinary" do
+  <<~RUBY
+     do
+      cloud_name "#{cloud_name}"
+    end
+  end
 end
 
-say_status :cloudinary, "All set! Double-check the cloudinary block in your config file and review docs at"
+say_status :cloudinary, "All set! Double-check the cloudinary block in your config/initializers.rb file and review docs at"
 say_status :cloudinary, "https://github.com/bridgetownrb/bridgetown-cloudinary"
