@@ -18,7 +18,7 @@ module Bridgetown
         cloudinary_url&.sub("/image/upload", "/image/upload#{transformation}")
       end
 
-      def self.add_image_urls_to_resources(site, config)
+      def self.add_image_urls_to_resources(site, config) # rubocop:todo Metrics/CyclomaticComplexity
         site.contents.each do |resource|
           next unless resource.data[:cloudinary_id] && !resource.data[:image]
           next if resource.respond_to?(:collection) && resource.collection.data?
