@@ -8,7 +8,7 @@ add_gem "bridgetown-cloudinary"
 
 add_initializer :"bridgetown-cloudinary" do
   <<~RUBY
-     do
+    do
       cloud_name "#{cloud_name}"
     end
   RUBY
