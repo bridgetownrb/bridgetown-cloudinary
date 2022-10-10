@@ -18,22 +18,25 @@ images in Cloudinary directly, not your repo._)
 You can install this plugin via an automation to guide you through the configuration:
 
 ```shell
-bundle exec bridgetown apply https://github.com/bridgetownrb/bridgetown-cloudinary
+bin/bridgetown apply https://github.com/bridgetownrb/bridgetown-cloudinary
 ```
 
 Otheriwse, you can run this command to add this plugin to your site's Gemfile:
 
 ```shell
-$ bundle add bridgetown-cloudinary -g bridgetown_plugins
+$ bundle add bridgetown-cloudinary
 ```
 
-Then modify your `bridgetown.config.yml` configuration to point to your Cloudinary
+Then add the initializer to your configuration in `config/initializers.rb` and point to your Cloudinary
 cloud name:
 
-```yaml
-cloudinary:
-  cloud_name: my-cloud-name
+```ruby
+init :"bridgetown-cloudinary" do
+  cloud_name "my-cloud-name"
+end
 ```
+
+(For Bridgetown 1.1 or earlier, [read these instructions](https://github.com/bridgetownrb/bridgetown-cloudinary/tree/v1.2.0).)
 
 ## Usage
 

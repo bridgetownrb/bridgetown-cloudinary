@@ -4,14 +4,14 @@ say_status :cloudinary, "Installing the bridgetown-cloudinary plugin..."
 
 cloud_name = ask("What's your Cloudinary cloud name?")
 
-add_bridgetown_plugin "bridgetown-cloudinary"
+add_gem "bridgetown-cloudinary"
 
 add_initializer :"bridgetown-cloudinary" do
   <<~RUBY
      do
       cloud_name "#{cloud_name}"
     end
-  end
+  RUBY
 end
 
 say_status :cloudinary, "All set! Double-check the cloudinary block in your config/initializers.rb file and review docs at"
