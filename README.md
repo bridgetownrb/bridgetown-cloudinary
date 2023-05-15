@@ -9,9 +9,8 @@ This plugin wires the two up so you can use Cloudinary images in your blog posts
 articles, product pages, site templates, and anywhere else you might need to
 reference media optimized for mobile and responsive design.
 
-(_Note: For users who may be familiar with the jekyll-cloudinary plugin, this is
-unrelated and the usage is quite different. This plugin assumes you store your
-images in Cloudinary directly, not your repo._)
+> __Note__<br />
+> For users who may be familiar with the [jekyll-cloudinary](https://github.com/nhoizey/jekyll-cloudinary) plugin, this is unrelated and the usage is quite different. This plugin assumes you store your images in Cloudinary directly, not your repo.
 
 ## Installation
 
@@ -36,7 +35,8 @@ init :"bridgetown-cloudinary" do
 end
 ```
 
-(For Bridgetown 1.1 or earlier, [read these instructions](https://github.com/bridgetownrb/bridgetown-cloudinary/tree/v1.2.0).)
+> __Note__<br />
+> For __Bridgetown 1.1__ or earlier, [read these instructions](https://github.com/bridgetownrb/bridgetown-cloudinary/tree/v1.2.0).
 
 ## Usage
 
