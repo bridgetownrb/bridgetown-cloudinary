@@ -61,7 +61,9 @@ own.)
 
 You can use `image.path` in a template:
 
-`{{ post.image.path }}`
+```liquid
+{{ post.image.path }}
+```
 
 Since `image.path` is also referenced by the Bridgetown [Feed](https://github.com/bridgetownrb/bridgetown-feed) and [SEO](https://github.com/bridgetownrb/bridgetown-seo-tag) plugins,
 your Cloudinary images will be picked up in those contexts automatically.
@@ -69,17 +71,29 @@ your Cloudinary images will be picked up in those contexts automatically.
 To reference other available sizes, you can use either a Liquid tag or filter, or Ruby helper,
 depending on your needs. Using a tag:
 
-`{% cloudinary_img "Alt text goes here", post.cloudinary_id, "large" %}`
+```liquid
+{% cloudinary_img "Alt text goes here", post.cloudinary_id, "large" %}
+```
 
 Or a filter:
 
-`<img alt="Alt text" src="{{ post.cloudinary_id | cloudinary_url: "medium" }}" />`
+```liquid
+<img alt="Alt text"
+     src="{{ post.cloudinary_id | cloudinary_url: "medium" }}"
+     />
+```
 
 Or helpers in ERB and other Ruby templates:
 
-`<%= cloudinary_img "Alt text goes here", post.data.cloudinary_id %>`
+```erb
+<%= cloudinary_img "Alt text goes here", post.data.cloudinary_id %>
+```
 
-`<img alt="Alt text" src="<%= cloudinary_url post.data.cloudinary_id, :medium %>" />`
+```erb
+<img alt="Alt text"
+     src="<%= cloudinary_url post.data.cloudinary_id, :medium %>"
+     />
+```
 
 ### Default Sizes Included
 
@@ -109,7 +123,11 @@ cloudinary:
 
 Then you'll be able to reference image sizes like so:
 
-`<img alt="Alt text" src="{{ post.image.tiny }}" />`
+```liquid
+<img alt="Alt text"
+     src="{{ post.image.tiny }}"
+     />
+```
 
 Be aware that if an `image` front matter variable has already defined for a document,
 it will remain intact and the Cloudinary image transformations won't be apply for
@@ -128,7 +146,9 @@ cloudinary:
 If you configure transformations to get added to front matter, all custom
 transformations will show up there as well:
 
-`B&W image URL: {{ post.image.max_bw }}`
+```liquid
+B&W image URL: {{ post.image.max_bw }}
+```
 
 ## Testing
 
